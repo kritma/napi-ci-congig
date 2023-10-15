@@ -124,8 +124,8 @@ jobs:
       - name: Download artifacts
         uses: actions/download-artifact@v3
         with:
-          name: bindings-${{ matrix.settings.target }}
-          path: .
+          name: bindings-${{ matrix.settings.target }}.node
+          path: dist/${{ env.APP_NAME }}.${{ matrix.settings.target }}.node
       - name: List packages
         run: ls -R .
         shell: bash
