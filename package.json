@@ -1,8 +1,8 @@
 {
   "name": "napi-ci-congig",
   "version": "0.0.0",
-  "main": "index.js",
-  "types": "index.d.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "napi": {
     "name": "napi-ci-congig",
     "triples": {
@@ -25,11 +25,9 @@
   },
   "scripts": {
     "artifacts": "napi artifacts",
-    "build": "napi build --platform --release",
-    "build:debug": "napi build --platform",
-    "prepublishOnly": "napi prepublish -t npm",
+    "build": "napi build --platform --release dist/",
+    "build:debug": "napi build --platform dist/",
     "test": "ava",
-    "universal": "napi universal",
     "version": "napi version"
   },
   "packageManager": "yarn@3.6.4"
