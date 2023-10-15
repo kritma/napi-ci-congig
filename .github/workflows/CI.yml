@@ -26,7 +26,7 @@ jobs:
       matrix:
         settings:
           - host: macos-latest
-            target: x86_64-apple-darwin
+            target: darwin-x64
             build: |
               yarn build
               strip -x dist/*.node
@@ -93,7 +93,8 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v3
         with:
-          path: dist/*.node
+          name: ${{ env.APP_NAME }}.${{ matrix.settings.target }}.node
+          path: dist/${{ env.APP_NAME }}.*.node
           if-no-files-found: error
   test-macOS-windows-binding:
     name: Test bindings on ${{ matrix.settings.target }} - node@${{ matrix.node }}
@@ -123,8 +124,8 @@ jobs:
       - name: Download artifacts
         uses: actions/download-artifact@v3
         with:
-          name: ${{ env.APP_NAME }}.*.node
-          path: dist/*
+          name: ${{ env.APP_NAME }}.${{ matrix.settings.target }}.node
+          path: dist/${{ env.APP_NAME }}.${{ matrix.settings.target }}.node
       - name: List packages
         run: ls -R .
         shell: bash
