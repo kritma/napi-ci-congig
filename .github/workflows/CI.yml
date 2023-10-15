@@ -29,7 +29,7 @@ jobs:
             target: x86_64-apple-darwin
             build: |
               yarn build
-              strip -x *.node
+              strip -x dist/*.node
     name: stable - ${{ matrix.settings.target }} - node@18
     runs-on: ${{ matrix.settings.host }}
     steps:
