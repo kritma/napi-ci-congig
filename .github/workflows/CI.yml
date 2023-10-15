@@ -93,8 +93,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v3
         with:
-          name: bindings-${{ matrix.settings.target }}.node
-          path: dist/${{ env.APP_NAME }}.*.node
+          path: dist/*.node
           if-no-files-found: error
   test-macOS-windows-binding:
     name: Test bindings on ${{ matrix.settings.target }} - node@${{ matrix.node }}
@@ -124,8 +123,7 @@ jobs:
       - name: Download artifacts
         uses: actions/download-artifact@v3
         with:
-          name: bindings-${{ matrix.settings.target }}.node
-          path: dist/${{ env.APP_NAME }}.${{ matrix.settings.target }}.node
+          path: dist/
       - name: List packages
         run: ls -R .
         shell: bash
